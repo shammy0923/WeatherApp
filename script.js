@@ -22,6 +22,6 @@ GeoCode.then(data => {
     fetch(current_weather_url)
         .then(response => response.json())
         .then(data => {
-            console.log(convertKelvinToFarenehit(data.main.temp));
-            console.log(data.weather);
+            let Temperature = Math.round(convertKelvinToFarenehit(data.main.temp))
+            console.log(`It is ${Temperature} degrees in ${State}`)
     })})
