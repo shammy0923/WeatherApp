@@ -5,6 +5,8 @@ let State = "NY"
 let latitude
 let longitude
 
+let convertKelvinToFarenehit = (kelvin) => (kelvin - 273.15) * 1.8 + 32;
+
 const geocode_api_url = `http://api.openweathermap.org/geo/1.0/direct?q=${State}&limit=5&appid=${api_key}`
 
 let GeoCode = fetch(geocode_api_url)
@@ -20,6 +22,6 @@ GeoCode.then(data => {
     fetch(current_weather_url)
         .then(response => response.json())
         .then(data => {
-            console.log(data.main);
+            console.log(convertKelvinToFarenehit(data.main.temp));
             console.log(data.weather);
     })})
